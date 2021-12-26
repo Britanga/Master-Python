@@ -1,0 +1,24 @@
+{% extends 'layout.html' %} {# Hereda los bloques de layout.html #}
+
+{# Bloque para añadir el título específico #}
+{% block title %}
+    {{coche.2}} {# Modelo #}
+{% endblock %}
+
+{% block content %} {# Bloque para añadir el contenido específico #}
+
+    <h1>
+            {{coche.1}} {# Marca #}
+    </h1>
+
+    <span class="date">
+        {{coche.2}} {# Modelo #}
+        |
+        {{coche.3}} {# Precio #}
+    </span>
+    
+    <p>
+        {{coche.4}} {# Ciudad #}
+    </p>
+
+{% endblock %}

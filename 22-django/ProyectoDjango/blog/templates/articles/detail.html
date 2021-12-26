@@ -1,0 +1,23 @@
+<!-- Django encuentra el fichero aunque este ejecudando desde otra app (pages) -->
+{% extends 'layouts/layout.html' %} <!--Heredar layout-->
+
+{% block title %} {{article.title}} {% endblock %} <!-- Bloque para cargar el titulo -->
+
+{% block content %}
+
+    <!-- Si imagen es diferente a null y el n° caracteres de url es >= 1, muestra imagen-->
+    {% if article.image != 'null' and article.image.url|length >= 1 %}
+        <div class="image"> <!-- div= Elemento en bloque-->
+            <img src="{{article.image.url}}"/>
+        </div>
+    {% endif %}
+
+    <h1 class="title">{{article.title}}</h1>
+
+    <span class="date">{{article.created_at}}</span>
+
+    <p class="content">
+        {{article.content|safe}} <!--|safe  interpreta como html y no como textoPlano-->
+    </p>
+
+{% endblock %}

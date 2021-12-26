@@ -1,0 +1,31 @@
+{% extends 'layouts/layout.html' %} <!--Heredar layout-->
+
+{% block title %} {{title}} {% endblock %} <!-- Bloque para cargar el titulo -->
+
+{% block content %}
+    <h1>{{title}}</h1>
+
+    <!--Muestra todos los mensajes flash-->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning">
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {{register_form.errors}} <!--Muestra errores del formulario-->
+
+    <form method="post" action=""> <!--Formulario de registro de usuarios-->
+        {% csrf_token %} <!--Obligatorio en formularios-->
+
+        <label for="username">Nombre de usuario:</label>
+        <input type="text" name="username" />
+
+        <label for="password">Contraseña:</label>
+        <input type="password" name="password" />
+        
+        <input type="submit" value="Login" />
+    </form>
+
+{% endblock %}

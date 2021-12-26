@@ -1,0 +1,13 @@
+<!-- Django encuentra el fichero aunque este ejecudando desde otra app (blog) -->
+{% extends 'layouts/layout.html' %} <!--Heredar layout-->
+
+{% block title %} {{title}} {% endblock %} <!-- Bloque para cargar el titulo -->
+
+{% block content %}
+    <h1 class="title">{{title}}</h1>
+
+    {% include 'articles/articles.html' %} <!--Importa la template articles-->
+
+    {% include 'articles/pagination.html' %} <!--Importa la template pagination-->
+
+{% endblock %}

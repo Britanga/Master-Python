@@ -1,0 +1,34 @@
+{% extends 'layout.html' %} {# Hereda los bloques de layout.html #}
+
+{# Bloque para añadir el título específico #}
+{% block title %}
+    Crear coche
+{% endblock %}
+
+{% block content %} {# Bloque para añadir el contenido específico #}
+
+    {# Comprobar si es para editar o para crear coche #}
+    {% if coche %}
+        <h1>Editar coche: {{coche.1}} {{coche.2}}</h1> {# Marca y Modelo #}
+    {% else %}
+        <h1>Crear coche</h1>
+    {% endif %}
+
+    {# Formulario para crear coche #}
+    <form action="" method="POST">
+        <label for="marca">Marca</label>
+        <input type="text" name="marca" {% if coche %} value="{{coche.1}}" {% endif %} /> {# name permite enviar la info. al backend #}
+
+        <label for="modelo">Modelo</label>
+        <input type="text" name="modelo" {% if coche %} value="{{coche.2}}" {% endif %} />
+
+        <label for="precio">Precio</label>
+        <input type="number" name="precio" {% if coche %} value="{{coche.3}}" {% endif %} />
+
+        <label for="ciudad">Ciudad</label>
+        <input type="text" name="ciudad" {% if coche %} value="{{coche.4}}" {% endif %} />
+
+        <input type="submit" value="Guardar" />
+    </form>
+
+{% endblock %}

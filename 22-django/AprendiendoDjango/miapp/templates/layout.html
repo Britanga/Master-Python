@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <title>
+        {% block title %}
+        
+        {% endblock %}
+        | Jesús Brito
+    </title> <!--Título de cada página con block-->
+
+    <!--Carga ficheros estáticos-->
+    {% load static %}
+    <!--Carga hoja de styles.css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+</head>
+
+<body>
+
+    <!-- Cabecera de la página -->
+    <header>
+        <div id="logotipo">
+            <!--Logo Django-->
+            <img src="{% static 'images/logo.png' %}" />
+            <h1>Sitio web con Django</h1>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li>
+                <!--<a href="/inicio">Inicio</a>-->
+                <a href="{% url 'inicio' %}">Inicio</a>
+                <!-- url = name de AprendiendoDjango/urls.py -->
+                {% comment 'Ventajas' %}
+                    - No son links fijos.
+                    - Puedo modificar el nombre de la ruta en urls.py e igual funcionará
+                    porque estamos usando el name no la ruta directamente.
+                    - Ejm con 'hola-mundo-django/'
+                {% endcomment %}
+            </li>
+            <li>
+                <!--<a href="/articulos">Articulos</a>-->
+                <a href="{% url 'articulos' %}">Articulos</a>
+            </li>
+            <li>
+                <!--<a href="/create-article">Crear articulo</a>-->
+                <a href="{% url 'create' %}">Crear articulo</a>
+            </li>
+            <li>
+                <!--<a href="/create-full-article">Crear articulo 2</a>-->
+                <a href="{% url 'create_full' %}">Crear articulo 2</a>
+            </li>
+            <li>
+                <!--<a href="/hola-mundo">Hola Mundo</a>-->
+                <a href="{% url 'hola_mundo' %}">Hola Mundo</a>
+            </li>
+            <li>
+                <!--<a href="/pagina-pruebas">Página de pruebas</a>-->
+                <a href="{% url 'pagina' %}">Página de pruebas</a>
+            </li>
+            <li>
+                <!--<a href="/contacto-dos">Contacto</a>-->
+                <a href="{% url 'contacto' 'Jesús' 'Brito' %}">Contacto</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="barra"> <!-- Para efecto 3D -->
+        <span class="esquina-izquierda"></span> <!-- Span es etiqueta vacia -->
+        <span class="relleno-barra"></span>
+        <span class="esquina-derecha"></span>
+    </div>
+
+    <div id="content">
+        <div class="box"> <!-- Crea caja -->
+            <!--<h2 class="title">Título prueba</h2>-->
+            <!--Bloque: trozo de pantalla q va a ser sustituido por otro-->
+            {% block content %}
+                <!--Código que viene de templates-->
+                <strong>Contenido del bloque original!!!</strong>
+            {% endblock %}
+        </div>
+    </div>
+
+    <footer>
+        {% comment 'Otros ejemplos' %}
+            Master en Python &copy; Jesús Brito - {% now "Y" %}
+            Master en Python &copy; Jesús Brito - {% now "d/m/Y h:m:s" %}
+        {% endcomment %}
+        
+        Master en Python &copy; Jesús Brito - {% now "d/m/Y" %}
+        <!--Fecha con el servidor-->
+    </footer>
+
+</body>
+
+</html>

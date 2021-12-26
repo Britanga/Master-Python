@@ -1,0 +1,61 @@
+{% extends 'layout.html' %} {# Hereda los bloques de layout.html #}
+
+{# Bloque para añadir el título específico #}
+{% block title %}
+    Listado de coches
+{% endblock %}
+
+{% block content %} {# Bloque para añadir el contenido específico #}
+
+    <h1>Coches</h1>
+
+    {# Muestra msj. flash #}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message alert-success">
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+{# Listado de coches #}
+
+{% for coche in coches %}
+    <article class="article-item">
+
+        <div class="data">
+            <h2>
+                {# url_for = usado para crear una URL evitando sobrecarga de tener que cambiar las URL en una aplicación #}
+                {# Parámetros de URL de Método de detalles del coche (NombreFunción,Variable=Valor) #}
+                <a href="{{ url_for('coche', coche_id=coche.0) }}"> {# coche.0 = id #}
+                    {{coche.1}} {# Marca #}
+                </a>
+            </h2>
+
+            <span class="date">
+                {{coche.2}} {# Modelo #}
+                |
+                {{coche.3}} {# Precio #}
+            </span>
+            
+            <p>
+                {{coche.4}} {# Ciudad #}
+            </p>
+
+            {# Botones #}
+            <p>
+                <a href="{{ url_for('editar_coche', coche_id=coche.0) }}" class="btn btn-warning">Editar</a>
+                <a href="{{ url_for('borrar_coche', coche_id=coche.0) }}" class="btn">Eliminar</a>
+            </p>
+
+        </div>
+
+        <!--evita elementosAbajo suban arriba x culpa del float -->
+        <div class="clearfix"></div> <!--Separador de articulos-->
+
+    </article>
+{% endfor %}
+
+{% endblock %}

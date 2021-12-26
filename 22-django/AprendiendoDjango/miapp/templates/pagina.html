@@ -1,0 +1,45 @@
+{% extends 'layout.html' %} <!--Herdera/Introduce layout dentro de este template-->
+
+<!--Carga filtros creados-->
+{% load filters %} <!-- filters nombre del archivo (puede ser otro nombre)-->
+
+{% block title %} Página de pruebas {% endblock %} <!--Introduce título-->
+
+{% block content %} <!--Introduce contenido-->
+<h1 class="title">Página de mi web</h1>
+
+<!-- Filtros -->
+<p>{{"Creado por Jesús Brito ñññ"|cut:"ñ"}}</p> <!-- Filtro |cut: = corta lo seleccionado -->
+
+<p>{{texto|default:"no hay nada"}}</p> <!-- Filtro |default: = si textoVacio, muestraTexto -->
+
+<!-- Filtros para listas -->
+<p>{{lista|first}}</p> <!-- Filtro |first: = muestra 1er elemento de la lista -->
+
+<p>{{lista|last}}</p> <!-- Filtro |last: = muestra ultimo de la lista -->
+
+<p>{{lista|join:', '}}</p> <!-- Filtro |join: = muestra c/u elementos de la lista -->
+
+<p>{{lista|length}}</p> <!-- Filtro |length: = muestra cantidad de la lista -->
+
+<p>{{lista|random}}</p> <!-- Filtro |random: = muestra elemento aleatorio de la lista -->
+
+<!-- Filtros para string -->
+<p>{{"texto pruebas"|length}}</p> <!-- Filtro |length: = muestra cantidad del string -->
+
+<p>{{"texto pruebas"|upper}}</p> <!-- Filtro |upper: = muestra todo en mayusculas -->
+
+<p>{{"texto Pruebas"|lower}}</p> <!-- Filtro |lower: = muestra todo en minusculas -->
+
+<!-- Filtro |striptags: = muestra todo borrando etiquetas html -->
+<p>{{"<h1>texto</h1> <strong>Pruebas</strong>"|striptags}}</p>
+
+<!-- Filtro |striptags|wordcount: = muestra todo borrando etiquetas html y Nro de palabras -->
+<p>{{"<h1>texto</h1> <strong>Pruebas</strong> hola <p>mundo</p>"|striptags|wordcount}}</p>
+
+<!-- Usando filtro creado -->
+<!-- Filtro |safe convierte de texto a codigo de la plantilla (en este caso html) -->
+{{"Jesús Brito WEB"|saludo|safe}}
+<!-- Filtro ubicado en paquete "templatetags" -> filters.py -->
+
+{% endblock %}

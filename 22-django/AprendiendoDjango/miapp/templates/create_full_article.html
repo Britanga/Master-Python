@@ -1,0 +1,31 @@
+{% extends 'layout.html' %} <!--Herdera/Introduce layout dentro de este template-->
+
+<!--Carga filtros creados-->
+{% load filters %} <!-- filters nombre del archivo (puede ser otro nombre)-->
+
+{% block title %} Formularios en Django {% endblock %} <!--Introduce título-->
+
+{% block content %} <!--Introduce contenido-->
+<h1 class="title">Formularios en Django</h1>
+
+{% if form.errors %} <!-- Si hay errores en la validación del formulario -->
+    <strong class="rojo">
+        Hay errores en el formulario
+        <!--{{form.errors}} Si quisiera mostrar errores arriba del todo-->
+    </strong>
+{% endif %}
+
+<!--<form action="{% url 'save' %}" method="GET">-->
+<form action="" method="POST"> <!-- action vacio para que vaya a esta misma pagina-->
+
+    {% csrf_token %} <!-- Necesario para que funcione POST -->
+
+    <!--{{ form }}--> <!-- Muestra formulario -->
+    {{ form.as_p }} <!-- Mete cada campo en un parrafo -->
+    <!--{{ form.as_ul }}--> <!-- Mete cada campo en una lista -->
+
+    <input type="submit" value="Guardar" />
+
+</form>
+
+{% endblock %}

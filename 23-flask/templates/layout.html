@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block title %} | Aprendiendo Flask con Jesús Brito {% endblock %}</title>
+        <!--CargarFicheroEstatico = (NombreDirectorio, NombreCarpetayFichero)-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" /> <!--Cargar hoja de estilos-->
+    </head>
+    <body>
+
+    <!-- Cabecera de la página -->
+    <header>
+        <div id="logotipo">
+            <!--Logo Flask-->
+            <img src="{{ url_for('static', filename='img/flask.png') }}" />
+            <h1>Flask con Jesús</h1>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li>
+                <a href="/">Inicio</a>
+            </li>
+            <li>
+                <a href="{{ url_for('crear_coche') }}">Crear coche</a>
+            </li>
+            <li>
+                <a href="{{ url_for('coches') }}">Listado de coches</a>
+            </li>
+            <li>
+                <a href="{{ url_for('informacion') }}">Informacion</a>
+            </li>
+            <li>
+                <a href="{{ url_for('contacto') }}">Contacto</a>
+            </li>
+            <li>
+                <a href="{{ url_for('lenguajes') }}">Lenguajes de programación</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="barra"> <!-- Para efecto 3D -->
+        <span class="esquina-izquierda"></span> <!-- Span es etiqueta vacia -->
+        <span class="relleno-barra"></span>
+        <span class="esquina-derecha"></span>
+    </div>
+
+    <div id="content">
+        <div class="box"> <!-- Crea caja -->
+            <!--<h2 class="title">Título prueba</h2>-->
+            <!--Bloque: trozo de pantalla q va a ser sustituido por otro-->
+            {% block content %}
+                <!--Código que viene de templates-->
+                <strong>Contenido del bloque original!!!</strong>
+            {% endblock %}
+        </div>
+    </div>
+
+    <footer>        
+        Master en Python &copy; Jesús Brito - {{now.month}}/{{ now.year }}
+        <!--Fecha con el servidor-->
+    </footer>
+
+    </body>
+</html>

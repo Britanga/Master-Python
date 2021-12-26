@@ -1,0 +1,26 @@
+{% extends 'layouts/layout.html' %} <!--Heredar layout-->
+
+{% block title %} {{title}} {% endblock %} <!-- Bloque para cargar el titulo -->
+
+{% block content %}
+    <h1>{{title}}</h1>
+
+    {{register_form.errors}} <!--Muestra errores del formulario-->
+
+    <form method="post" action=""> <!--Formulario de registro de usuarios-->
+        {% csrf_token %} <!--Obligatorio en formularios-->
+
+        {% comment "" %}
+        {{register_form.as_p}} <!--Formulario-->
+        {% endcomment %}
+
+        <!--Recorriendo los campos del formulario-->
+        {% for field in register_form %}
+            <label>{{field.label}}</label> <!--Muestra etiquetas-->
+            {{field}} <!--Muestra campos-->
+        {% endfor %}
+        
+        <input type="submit" value="Registrarse" />
+    </form>
+
+{% endblock %}

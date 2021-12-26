@@ -1,0 +1,15 @@
+<!-- Django encuentra el fichero aunque este ejecudando desde otra app (pages) -->
+{% extends 'layouts/layout.html' %} <!--Heredar layout-->
+
+{% block title %} {{page.title}} {% endblock %} <!-- Bloque para cargar el titulo -->
+
+{% block content %}
+    <h1 class="title">{{page.title}}</h1>
+
+    <span class="date">{{page.created_at}}</span>
+
+    <p class="content">
+        {{page.content|safe}} <!--|safe  interpreta como html y no como textoPlano-->
+    </p>
+
+{% endblock %}

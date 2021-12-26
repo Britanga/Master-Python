@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block title %} {{title}} {% endblock %}
+
+{% block content %}
+
+<!-- Esto es un comentario -->
+{% comment 'Nota para el comentario' %}
+    <h1>No lo muestra en inspeccionar elemento</h1>
+{% endcomment %}
+
+<h1 class="title">{{title}}</h1>
+
+<!-- Variable de un método mostrada en plantilla -->
+<p>{{mi_variable}}</p>
+
+<!-- Condicionales IF -->
+{% if nombre and nombre == 'Jesús Brito' %} <!-- Si nombre existe y es igual a... -->
+    <p>{{nombre}}</p>
+{% else %}
+    <strong>El nombre no existe o no coincide</strong>
+{% endif %}
+
+<h3>Listado de lenguajes de programación</h3>
+<ul>
+    {% for lenguaje in lenguajes %}
+
+        {% comment '' %}
+        <li>{{lenguaje}} {{forloop.first}}</li> <!--first comprueba 1ero lista-->
+        <li>{{lenguaje}} {{forloop.last}}</li> <!--last comprueba ultimo lista-->
+        <li>{{lenguaje}} {{forloop.counter}}</li> <!--counter = ubicación en lista-->
+        <li>{{lenguaje}} {{forloop.counter0}}</li> <!--counter0 comienza en 0-->
+        <li>{{lenguaje}} {{forloop.revcounter}}</li> <!--revcounter contador inverso-->
+        <li>{{lenguaje}} {{forloop.revcounter0}}</li> <!--revcounter0 termina en 0-->
+        {% endcomment %}
+
+        <li>{{forloop.counter}}. {{lenguaje}}</li> <!--contador básico-->
+
+    {% empty %} <!-- Si "lenguajes" esta vacio-->
+        <p>NO HAY LENGUAJES QUE MOSTRAR</p>
+    {% endfor %}
+</ul>
+
+<!-- Importar templates y creando variables -->
+<!-- "only" al final hace que no herede variables de otras templates -->
+{% include 'fecha-actual.html' with saludo="Hola mundo desde plantilla" %}
+
+{% endblock %}

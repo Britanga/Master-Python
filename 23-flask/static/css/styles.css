@@ -1,0 +1,352 @@
+/* Estilos generales */
+
+*{ /*Todos los elementos de la pagina web*/
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif, Arial, Helvetica;
+    text-decoration: none;
+}
+
+.box p, .box h2, .box h3, .box ul{ /*Todos los parrafos, encabezado lvl 2y3 y listas desordenadas*/
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.box ul, .box ol{ /*Todas las listas desordenadas y ordenadas (.box afecta solo al contenido)*/
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.clearfix{ /*Separador de articulos*/
+    clear: both; /*Para limpiar los float de cada articulo*/
+    float: none; /*Para q el seperador no este en float de ninguna manera*/
+}
+
+body{ /*Cuerpo*/
+    background-color: #F2F2F2;
+}
+
+/* Estilos cabecera */
+
+header{ /*Título y logo*/
+    width: 1212px;
+    height: 140px;
+    background-color: #23282B;
+    margin: 0px auto; /*Centra*/
+}
+
+#logotipo{ /*Título y logo*/
+    width: 35%;
+    height: 130px;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+#logotipo img{ /*Logo*/
+    display: block;
+    width: 60px;
+    float: left; /*Coloca a la izquierda*/
+    margin-top: 20px;
+}
+
+#logotipo h1{ /*Título*/
+    display: block; /*Para manipular como quiera*/
+    float: left;
+    margin-top: 40px;
+    margin-left: 20px;
+    letter-spacing: 2px;
+    /*text-transform: uppercase;*/ /*Texto en Mayuscula*/
+    font-weight: lighter; /*Letra más delgada*/
+    color: #2ba977;
+}
+
+/* Estilos barra navegación */
+
+nav{ /*Barra navegación*/
+    width: 1250px;
+    height: 40px;
+    margin: 0 auto;
+    background-color: #1B1E1F;
+    border: 1px solid #333333;
+    box-shadow: 0px 22px 22px gray; /*Sombra (x=0px, y=22px, difuminado=22px, color)*/
+    font-size: 15px;
+}
+
+/* > solo aplica los estilos a los elementos q estan justamente dentro de la etiqueta*/
+
+nav > ul{ /*Todos los elementos de Barra navegación*/
+    list-style: none;
+    text-decoration: none;
+}
+
+nav > ul > li{ /*c/u los elementos de Barra navegación*/
+    line-height: 40px;
+    float: left;
+}
+
+nav > ul > li > a{ /*Título de c/u los elementos de Barra navegación*/
+    display: block;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #d1d4d6;
+}
+
+nav > ul > li > a:hover{ /*Arrastra mouse al Título de c/u los elementos de Barra navegación*/
+    background: #2ba977;
+    box-shadow: 0px 0px 5px #444 inset; /*inset = difuminado dentro de la caja*/
+    color: white;
+    transition: all 300ms;
+}
+
+nav > ul > li > ul{ /*Menú Desplegable*/
+    display: none;
+    position: absolute;
+    color: white;
+    text-align: left;
+    width: 160px;
+    box-shadow: 0px 2px 2px gray;
+}
+
+nav > ul > li:hover > ul{ /*Arrastra mouse a Categorías de Barra navegación*/
+    display: block;
+    color: white;
+    margin: 0px;
+    list-style: none; /*Quita los * de la lista*/
+}
+
+nav > ul > li:hover > ul >li{ /*Arrastra mouse a las categorías de Barra navegación*/
+    background: #F2F1F0;
+    border-bottom: 1px solid #d6d6d6;
+    padding: 8px;
+    line-height: 25px;
+    font-size: 13px;
+    transition: all 300ms; /*Pequeña transición*/
+}
+
+nav > ul > li:hover > ul >li a{ /*Links de las categorías de Menú desplegable*/
+    color: #666;
+    transition: all 300ms;
+}
+
+nav > ul > li:hover > ul >li:hover{ /*Arrastra mouse a las categorías de Menú desplegable*/
+    background: #2ba977;
+}
+
+nav > ul > li:hover > ul >li:hover a{ /*Arrastra mouse a los links de las categorías de Menú desplegable*/
+    display: block; /*Para q se pueda clickear todo el marco del elemento del menu desplegable*/
+    color: white;
+}
+
+.barra{ /*Todos elementos 3D*/
+    width: 1250px;
+    margin: 0 auto;
+}
+
+.esquina-izquierda{
+    display: block;
+    border-left: 20px solid transparent; /*Borde transparente*/
+    border-top: 10px solid #2B2F30;
+    float: left;
+}
+
+.esquina-derecha{
+    display: block;
+    border-right: 20px solid transparent; /*Borde transparente*/
+    border-top: 10px solid #2B2F30;
+    float: right;
+}
+
+.relleno-barra{
+    display: block;
+    width: 1210px; /*Suficiente para encajar[barra=1250-40 (20 de izq y der)]*/
+    background: #2B2F30;
+    height: 10px;
+    float: left; /*Necesario para ordenar (izq/relleno/der)*/
+}
+
+/* Estilos contenido central */
+
+#content{ /*Todo el contenido*/
+    width: 1212px;
+    min-height: 930px; /*Altura mínima*/
+    margin: 0 auto;
+    margin-bottom: 30px;
+    margin-top: 40px;
+}
+
+.box{ /*Caja del contenido*/
+    background: white;
+    width: 95%;
+    min-height: 930px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 2px; /*Borde redondeado*/
+    margin: 0 auto;
+}
+
+.box .image{ /*Caja de Imagenes de los articulos*/
+    width: 45%;
+    float: left;
+    margin-right: 40px;
+}
+
+.box .image img{ /*Imagenes de los articulos*/
+    width: 100%;
+}
+
+.box a{ /*Enlaces de los articulos*/
+    color: #444;
+    transition: all 300ms;
+}
+
+.box a:hover{ /*Al arrastrar mouse en los enlaces de los articulos*/
+    color: #1f7e58;
+}
+
+.box form{ /*Formulario*/
+    width: 40%;
+}
+
+.box form input,
+.box form label{ /*Campos de textos y etiquetas de formulario*/
+    display: block; /*Ubica cada elemento en 1 linea*/
+    padding: 5px;
+    padding-left: 0px;
+}
+
+.box form input[type="text"],
+.box form input[type="email"],
+.box form input[type="password"],
+.box form textarea,
+.box form select{ /*Titulo, email, contraseña, contenidos y selects de formulario*/
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.box form select{ /*Selects de formulario*/
+    width: 100px;
+    padding: 5px;
+}
+
+.box form input[type="submit"],
+.box form input[type="button"],
+.box form button{ /*Botones de formulario*/
+    padding: 10px;
+    margin-top: 5px;
+    background: #2ba977;
+    border: 1px solid #444;
+    color: white;
+    transition: 300ms all;
+}
+
+.rojo{ /*Validación de formulario*/
+    color: red;
+}
+
+.message,
+.alert-success,
+.alert{ /*Msj flash de formulario*/
+    padding: 20px;
+    background: #1f7e58;
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.alert-warning{
+    background: #972824;
+}
+
+.box form input[type="submit"]:hover,
+.box form input[type="button"]:hover,
+.box form button:hover{ /*Al arrastrar mouse en botones de formulario*/
+    cursor: pointer; /*Cursor en forma de mano*/
+    background: #1f7e58;
+}
+
+.title{ /*Título del contenido*/
+    color: #444;
+    letter-spacing: 1px;
+    font-size: 30px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.date{ /*Fecha de las paginas del menú*/
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: gray;
+}
+
+.content{ /*Contenido de las paginas del menú*/
+    line-height: 25px; /*Interlineado de las lineas del contenido*/
+}
+
+.article-item{ /*Articulos*/
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    clear: both; /*Ajusta articulos c/u debajo del otro*/
+}
+
+.article-item .image{ /*Marco div de imagen del articulo*/
+    width: 200px;
+    height: 200px;
+    float: left; /*Marco a la izquierda del articulo*/
+    overflow: hidden; /*Oculta imagen sobrante*/
+}
+
+.article-item .image img{ /*Ajusta Imagen dentro del marco div*/
+    height: 200px;
+}
+
+.article-item .data{ /*Titulo, fecha, contenido y boton eliminar articulos*/
+    float: left;
+    padding: 15px;
+    padding-top: 0px;
+}
+
+.article-item h2{ /*Encabezado lvl 2 de los articulos*/
+    display: block; /*Para q funcione margin-bottom*/
+    font-size: 25px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.article-item span.date{ /*FechaCreacion de los articulos*/
+    display: block;
+    font-size: 15px;
+    color: gray;
+    margin-bottom: 10px;
+}
+
+.btn{ /*Boton editar y eliminar coche*/
+    padding: 10px;
+    background: rgb(207, 48, 48);
+    color: white !important; /*!important sobreescribe cualquier otro estilo*/
+    border: 1px solid black;
+    display: block; /*Se ubica boton abajo del contenido del articulo*/
+    margin-top: 15px;
+    width: 100px; /*Para evitar q se vea muy ancho*/
+    text-align: center;
+}
+
+.btn-warning{ /*Boton advertencia de coche*/
+    background: rgb(243, 162, 32);
+}
+
+/* Estilos al pie de página */
+
+footer{
+    width: 1250px;
+    background-color: #1B1E1F;
+    border: 1px solid #333;
+    color: #d1d4d6;
+    text-align: center; /*Centra texto*/
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow: 0px 0px 20px gray;
+}

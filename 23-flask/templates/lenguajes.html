@@ -1,0 +1,15 @@
+{% extends 'layout.html' %} <!--Hereda los bloques de layout.html-->
+
+<!--Bloque para añadir el título específico-->
+{% block title %}
+    Lenguajes
+
+    {{ super() }} <!--Añade el contenido "Lenguajes" al bloque "title" de layout-->
+
+{% endblock %}
+
+{% block content %} <!--Bloque para añadir el contenido específico-->
+
+    <h1>Página de Lenguajes de Programación</h1>
+
+{% endblock %}

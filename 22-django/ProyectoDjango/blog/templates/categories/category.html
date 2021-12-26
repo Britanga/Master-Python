@@ -1,0 +1,13 @@
+<!-- Django encuentra el fichero aunque este ejecudando desde otra app (blog) -->
+{% extends 'layouts/layout.html' %} <!--Heredar layout-->
+
+{% block title %} {{category.name}} {% endblock %} <!-- Bloque para cargar el titulo -->
+
+{% block content %}
+    <h1 class="title">{{category.name}}</h1>
+    <p>{{category.description}}</p>
+
+    <!--category.article_set.all saca todos los articulos que sean de la misma categoria-->
+    {% include 'articles/articles.html' with articles=category.articles.all %} <!--Importa la template articles-->
+
+{% endblock %}

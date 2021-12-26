@@ -1,0 +1,61 @@
+{% for article in articles %}
+    <article class="article-item">
+
+        <!-- Si imagen es diferente a null y el n° caracteres de url es >= 1, muestra imagen-->
+        {% if article.image != 'null' and article.image.url|length >= 1 %}
+            <div class="image"> <!-- div= Elemento en bloque-->
+                <img src="{{article.image.url}}"/>
+            </div>
+        {% endif %}
+
+        <div class="data">
+            <h2>
+                <a href="{% url 'article' article.id %}">
+                    {{article.title}}
+                </a>
+            </h2>
+            <span class="date">
+                {% comment "atributos" %}
+                    {{article}} <!--Muestra titulo-->
+                    {{article.user}} <!--Muestra NombreUsuario-->
+                    {{article.category}} <!--Muestra NombreCategoria-->
+                    {{article.categories}} <!--Muestra NombreCategorias-->
+                    {{article.email}} <!--Muestra Email-->
+
+                    La potencia de esto es q directamente tengo disponibles para usar
+                    todos los objetos/atributos vinculados y relacionados sin necesidad
+                    de hacer muchas consultas SQL (Ejm: consultas multitablas complejas,
+                    consulta con join complejo, ni 2 consultas separadas para sacar informacion
+                    diferente)
+                {% endcomment %}
+
+                <p> <!--Muestra c/u categorias-->
+                    {% for category in article.categories.all %}
+                        <!--href=hipervinculo para acceder a las diferentes categorias-->
+                        <a href="{% url 'category' category.id %}">{{category.name}}</a>
+
+                        <!--Si n°Elemento es < n°Categorias-->
+                        {% if forloop.counter < article.categories.all|length %}
+                            <!--Muestra - separador-->
+                            {{'-'}}
+                        {% endif %}
+                    {% endfor %}
+                </p>
+
+                <!--Muestra Nombres y Apellidos del Usuario-->
+                {{article.user.first_name}} {{article.user.last_name}}
+                | <!--BarraSeparadora-->
+                <!--Muestra FechaCreacion-->
+                {{article.created_at}}
+            </span> <!-- span= Elemento en linea -->
+            
+            <p>
+                {{article.content|safe}} <!--|safe  interpreta como html y no como textoPlano-->
+            </p>
+        </div>
+
+        <!--evita elementosAbajo suban arriba x culpa del float -->
+        <div class="clearfix"></div> <!--Separador de articulos-->
+
+    </article>
+{% endfor %}

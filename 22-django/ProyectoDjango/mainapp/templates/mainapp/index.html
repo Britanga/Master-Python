@@ -1,0 +1,29 @@
+{% extends 'layouts/layout.html' %} <!--Heredar layout-->
+
+{% block title %} {{title}} {% endblock %} <!-- Bloque para cargar el titulo -->
+
+{% block content %}
+    <h1>{{title}}</h1>
+    <hr/>
+
+    <!--Muestra todos los mensajes flash-->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success">
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <!--Si email existe, Mostrar usuario identificado-->
+    {% if user.email %}
+        <!--accede a datos usando request o sin el request da igual-->
+        <h2>Bienvenido, {{request.user.first_name}} {{user.last_name}}</h2>
+        <p>
+            {{user.email}}
+        </p>
+    {% else %}
+        <h2>Identificate para ver más cosas</h2>
+    {% endif %}
+
+{% endblock %}
